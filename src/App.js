@@ -6,7 +6,7 @@ function App() {
       <div>
         {/* <Home type='webeditor' language='none' /> */}
 
-        <Home type='language' language='javascript' />
+        <Home type='language' language='python' />
       </div>
     </>
   )

@@ -23,9 +23,7 @@ const Javascript = () => {
           color='#FCD000'
         />
       </Container>
-      <div>
-        
-      </div>
+      <div></div>
     </>
   )
 }
