@@ -1,14 +1,10 @@
 import Home from './components/Home'
 
-function App() {
+function App(props) {
   return (
-    <>
-      <div>
-        {/* <Home type='webeditor' language='none' /> */}
-
-        <Home type='language' language='python' />
-      </div>
-    </>
+    <div>
+      <Home type={props.type} language={props.language} />
+    </div>
   )
 }
 
