@@ -1,0 +1,9 @@
+{
+    "name": "Experiment Name",
+    "inputs": [
+        [12,5,10],
+        [1,2,3]
+    ],
+    "expected": ["5,10,12"]
+    
+}

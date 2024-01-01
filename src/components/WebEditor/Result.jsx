@@ -4,19 +4,34 @@ import { DataContext } from './DataProvider'
 
 import { Box, styled } from '@mui/material'
 
+
 const Container = styled(Box)`
-  height: 41vh;
+  flex: 1;
+  border: 3px solid black;
 `
 
 const Result = () => {
   const [src, setSrc] = useState('')
-  const { html, css, js } = useContext(DataContext)
+  const { html, css, js, exp } = useContext(DataContext)
 
   const srcCode = `
         <html>
-            <body>${html}</body>
-            <style>${css}</style>
-            <script>${js}</script>
+            <body style="height: 100vh;width: 100vw">
+              <h1 style="text-align: center">Output</h1>
+              <h3>Code Output:</h3>
+              <div id='result' style="margin-left: 10%"></div>
+              <h3>Expected Output:</h3>
+              <div id='expected-result' style="margin-left: 10%">
+              </div>
+            </body>
+            <script>
+            document.getElementById('expected-result').innerHTML = ${JSON.stringify(exp?.expected)};
+            </script>
+            <script>
+              ${js}
+              let x = func(${exp?.inputs?.map(inp => JSON.stringify(inp))});
+              document.getElementById('result').innerHTML = x;
+            </script>
         </html>
     `
 
@@ -29,7 +44,7 @@ const Result = () => {
   }, [html, css, js])
 
   return (
-    <Container style={html || css || js ? null : { background: '#444857' }}>
+    <Container>
       <iframe
         srcDoc={src}
         title='output'
@@ -37,6 +52,7 @@ const Result = () => {
         frameBorder='0'
         width='100%'
         height='100%'
+        id='result'
       />
     </Container>
   )
