@@ -11,7 +11,7 @@ const DataProvider = ({ children }) => {
   useEffect(() => {
     try {
       const fetchData = async () => {
-        await fetch('./codeditor.json')
+        await fetch('./code-assessment.json')
         .then(async response => {
           await response.json()
             .then(data => {
