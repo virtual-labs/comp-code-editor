@@ -12,7 +12,7 @@ const Container = styled(Box)`
 `
 
 const Code = () => {
-  const { html, css, js, setHtml, setCss, setJs } = useContext(DataContext)
+  const { js, setJs } = useContext(DataContext)
 
   return (
     <Container>      

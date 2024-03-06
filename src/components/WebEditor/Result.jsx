@@ -12,7 +12,7 @@ const Container = styled(Box)`
 
 const Result = () => {
   const [src, setSrc] = useState('')
-  const { html, css, js, exp } = useContext(DataContext)
+  const { js, exp } = useContext(DataContext)
 
   const srcCode = `
         <html>
@@ -41,7 +41,7 @@ const Result = () => {
     }, 250)
 
     return () => clearTimeout(timeout)
-  }, [html, css, js])
+  }, [js])
 
   return (
     <Container>

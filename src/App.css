@@ -30,5 +30,6 @@ input {
   }
 }
 
-#result {
+.problem-statement {
+  margin-left: 20px;
 }

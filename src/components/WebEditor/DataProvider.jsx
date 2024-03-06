@@ -4,9 +4,9 @@ export const DataContext = createContext(null)
 
 const DataProvider = ({ children }) => {
   const [exp, setExp] = useState({})
-  const [html, setHtml] = useState('')
   const [js, setJs] = useState('')
-  const [css, setCss] = useState('')
+  const [problems, setProblems] = useState([])
+  const [experimentName, setExperimentName] = useState('')
 
   useEffect(() => {
     try {
@@ -16,7 +16,8 @@ const DataProvider = ({ children }) => {
           await response.json()
             .then(data => {
               console.log(data)
-              setExp(data);
+              setExperimentName(data['experiment name'])
+              setProblems(data?.problems);
               let inputs = data?.inputs?.map((inp, idx) => `inp${idx+1}`)
               if(inputs == undefined) inputs = [];
               setJs(
@@ -30,7 +31,9 @@ const func = (${String(inputs)}) => {
 }
               `)
             })
-
+        })
+        .catch(err => {
+          console.log(err)
         })
       }
 
@@ -45,13 +48,12 @@ const func = (${String(inputs)}) => {
   return (
     <DataContext.Provider
       value={{
-        html,
-        setHtml,
-        css,
-        setCss,
         js,
         setJs,
-        exp
+        problems,
+        setProblems,
+        exp,
+        setExp
       }}
     >
       {children}
