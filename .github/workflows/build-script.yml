@@ -17,7 +17,7 @@ jobs:
             node-version: '18'
             check-latest: true
     - run: |
-        npm install
+        npm install --legacy-peer-deps
         npm run build
         git config --local user.email "admin@vlabs.ac.in"
         git config --local user.name "vleadadmin"
