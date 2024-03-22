@@ -1,7 +1,7 @@
  
 # This workflow is build the code editor and push the Static files to gh-pages
 
-name: Deploy Testing Branch
+name: Build Comp Editor
 on:
   push:
     branches: 
