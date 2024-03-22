@@ -8,7 +8,9 @@
                 [12,5,10],
                 [1,2,3]
             ],
-            "expected": ["5,10,12"]
+            "expected": [5,10,12],
+            "inputs description": "Input consists of an array of unsorted array - inp1. It may be of arbitrary length.",
+            "expected description": "An array of numbers Eg. 1,2,4,5 sorted in ascending orders"
         },
         {
             "problem name": "Problem 2",
@@ -17,7 +19,8 @@
                 [1,2,3],
                 [12,5,10]
             ],
-            "expected": ["1,2,3"]
+            "inputs description": "Input consists of an array of unsorted array - inp1. It may be of arbitrary length.",
+            "expected description": "An array of numbers Eg. 1,2,4,5 sorted in ascending orders"
         }
     ]
 }

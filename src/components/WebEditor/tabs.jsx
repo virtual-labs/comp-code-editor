@@ -82,6 +82,10 @@ return 'hello world'
         <div className='problem-statement'>
             <h4>{problems[value]?.['problem name']}</h4>
             <span>{problems[value]?.['description']}</span>
+            <h5 style={{fontStyle: 'italic'}}>Input Format</h5>
+            <span>{problems[value]?.['inputs description']}</span>
+            <h5 style={{fontStyle: 'italic'}}>Output Format</h5>
+            <span>{problems[value]?.['expected description']}</span>
         </div>
       </Box>
       {

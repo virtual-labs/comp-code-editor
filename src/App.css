@@ -28,6 +28,9 @@ input {
     flex-direction: column;
     /* height: initial; */
   }
+  #result {
+    min-height: 40vh;
+  }
 }
 
 .problem-statement {
