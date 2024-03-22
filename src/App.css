@@ -1,0 +1,38 @@
+
+.CodeMirror {
+  height: 340px !important;
+  color: #fff;
+}
+
+.CodeMirror-gutters {
+  background: #1d1e22 !important;
+}
+
+.CodeMirror-scroll {
+  background: #1d1e22;
+}
+
+input {
+  display: block;
+}
+
+.parent {
+  display: flex;
+  height: 100%;
+  flex-wrap: wrap;
+
+}
+
+@media only screen and (max-width: 700px) {
+  .parent {
+    flex-direction: column;
+    /* height: initial; */
+  }
+  #result {
+    min-height: 40vh;
+  }
+}
+
+.problem-statement {
+  margin-left: 20px;
+}
