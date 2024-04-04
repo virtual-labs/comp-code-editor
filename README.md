@@ -1,74 +1,29 @@
-# Getting Started with Create React App
+# Virtual Labs Code Assessment Tool
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
 
-## Available Scripts
+Welcome to the Virtual Labs Code Assessment Tool repository! This tool is designed to provide experiment developers with an efficient way to integrate code assessment exercises into their experiments. With a simple JSON file containing problem statements, inputs, and expected outputs, this tool offers a JavaScript-based code IDE where learners can code their solutions for the respective problems and simultaneously check for the outputs. The tool also enables the developers to add multiple problem exercises and for learners to seamlessly navigate between problems, making their learning experience fruitful and joyous.
 
-In the project directory, you can run:
+## Target Audience
 
-### `npm install --legacy-peer-deps`
+- `Educators`: Teachers, instructors, and educators looking to incorporate coding exercises into their curriculum or training programs.
+- `Experiment Developers`: Researchers and experiment designers who require code assessment tasks as part of their experiments.
+- `Learners`: Students, learners who would be using the code assessment tool to try coding exercises as part of their learning curriculum
 
-Installs the necessary libraries for running the app.
+## Feature List
 
-### `npm start`
+The key features of Virtual Labs Code Assessment Tool include:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- `Documentation and help resources`: Provide user documentation and help files to guide users through the experiments.
+- `User-Friendly Interface`: The tool has been developed with constant feedback making it user friendly and modern UI. The tool has been designed keeping in mind the user base and to aid them in their learning process.
+- `Seamless Integration`: Experiment creators would find it very easy to integrate this tool with their experiments. It only requires some configurations and a JSON file containing the exercise descriptions along with problems statements, their inputs and expected outputs. This way it is hassle free and blends right into the existing experiment design.
+- `Multiple Problems Support`: The code assessment tool supports multiple problems and easy navigation between them. This way both the developers and the learners benefit with a more enriching set of problems and improved quality of coding exercises.
+- `Real Time Deployement`: The Virtual Labs Code Assessment Tool ensures that any changes made to experiments are deployed in real-time to GitHub Pages. Experiment creators can instantly see the updated version of their experiments and observe how the changes impact the overall experience.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## DOCS
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| DOCUMENT                                      | DESCRIPTION                                                                                       |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| [User documnent](./docs/user-doc.md)          | A comprehensive documentation for users of Virtual Labs Content Development Platform                                       |
+| [Developer document](./docs/developer-doc.md) | A comprehensive development documentation for developers working on the Virtual Labs Content Development Platform project. |
