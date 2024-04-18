@@ -25,5 +25,5 @@ The key features of Virtual Labs Code Assessment Tool include:
 
 | DOCUMENT                                      | DESCRIPTION                                                                                       |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| [User documnent](./docs/user-doc.md)          | A comprehensive documentation for users of Virtual Labs Content Development Platform                                       |
-| [Developer document](./docs/developer-doc.md) | A comprehensive development documentation for developers working on the Virtual Labs Content Development Platform project. |
+| [User document](./docs/user-doc.md)          | A comprehensive documentation for users, experiment creators of Virtual Labs Code Assessment Tool                                     |
+| [Developer document](./docs/developer-doc.md) | A comprehensive development documentation for developers working on the Virtual Labs Code Assessment Tool repository. |
