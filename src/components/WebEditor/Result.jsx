@@ -13,14 +13,6 @@ const Result = () => {
   const { html, css, js } = useContext(DataContext)
 
   const srcCode = `
-<<<<<<< Updated upstream
-        <html>
-            <body>${html}</body>
-            <style>${css}</style>
-            <script>${js}</script>
-        </html>
-    `
-=======
   <!DOCTYPE html>
   <html>
     <head>
@@ -160,7 +152,6 @@ const Result = () => {
     </body>
   </html>  
   `
->>>>>>> Stashed changes
 
   useEffect(() => {
     const timeout = setTimeout(() => {
