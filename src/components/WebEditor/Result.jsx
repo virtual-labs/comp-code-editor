@@ -5,7 +5,8 @@ import { DataContext } from './DataProvider'
 import { Box, styled } from '@mui/material'
 
 const Container = styled(Box)`
-  height: 41vh;
+  flex: 1;
+  border: 3px solid black;
 `
 
 const Result = () => {
@@ -159,7 +160,7 @@ const Result = () => {
     }, 250)
 
     return () => clearTimeout(timeout)
-  }, [ srcCode ])
+  }, [ srcCode, js ])
 
   return (
     <Container>
