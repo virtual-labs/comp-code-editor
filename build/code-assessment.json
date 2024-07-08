@@ -11,7 +11,8 @@
             "expected": [5,10,12],
             "inputs description": "Input consists of an array of unsorted array - inp1. It may be of arbitrary length.",
             "expected description": "An array of numbers Eg. 1,2,4,5 sorted in ascending orders",
-            "difficulty": "beginner"
+            "difficulty": "beginner",
+            "hint": "Hint would be here"
         },
         {
             "problem name": "Problem 2",

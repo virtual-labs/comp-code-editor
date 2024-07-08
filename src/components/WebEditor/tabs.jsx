@@ -4,14 +4,13 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-
-import Code from './Code';
-import Result from './Result';
 import { DataContext } from './DataProvider';
-import { Chip, styled } from '@mui/material';
+import { Chip, styled, Button, Collapse } from '@mui/material';
 import { green, yellow } from '@mui/material/colors';
 import { alpha } from '@mui/material/styles';
-
+import Code from './Code';
+import Result from './Result';
+import { Margin } from '@mui/icons-material';
 
 const DifficultyChip = styled(Chip)`
   margin-top: 5px;
@@ -77,6 +76,7 @@ function a11yProps(index) {
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
   const { setJs, problems, setExp } = React.useContext(DataContext);
+  const [showHint, setShowHint] = React.useState(false);
 
   React.useEffect(() => {
     let data = problems[value];
@@ -100,6 +100,10 @@ return 'hello world'
     setValue(newValue);
   };
 
+  const toggleHint = () => {
+    setShowHint(!showHint);
+  };
+
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -112,7 +116,7 @@ return 'hello world'
               <Tab
                 key={idx}
                 label={label}
-                {...a11yProps(idx)}
+                {...a11yProps(idx)} // Correct usage of a11yProps
                 sx={{ backgroundColor: tabColor }}
               />
             );
@@ -131,6 +135,28 @@ return 'hello world'
           <span>{problems[value]?.['inputs description']}</span>
           <h5 style={{ fontStyle: 'italic' }}>Output Format</h5>
           <span>{problems[value]?.['expected description']}</span>
+          <br />
+          <Button
+            style={{ margin: '20px 0px' }}
+            onClick={toggleHint}
+            sx={{
+              mt: 1,
+              textTransform: 'none',
+              fontWeight: 'bold',
+              color: '#000', // Black text color
+              backgroundColor: '#f0f0f0', // Light gray background color
+              '&:hover': {
+                backgroundColor: '#e0e0e0', // Darker gray on hover
+              },
+            }}
+          >
+            Hint
+          </Button>
+          <Collapse in={showHint}>
+            <Box >
+              <Typography>{problems[value]?.['hint']}</Typography>
+            </Box>
+          </Collapse>
         </div>
       </Box>
       {problems.map((element, idx) => (
