@@ -1,0 +1,38 @@
+ 
+# This workflow is build the code editor and push the Static files to gh-pages
+
+name: Build Comp Editor
+on:
+  push:
+    branches: 
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      CI: false
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup node
+      uses: actions/setup-node@v2
+      with:
+            node-version: '18'
+            check-latest: true
+    - run: |
+        npm install --legacy-peer-deps
+        npm run build
+        git config --local user.email "admin@vlabs.ac.in"
+        git config --local user.name "vleadadmin"
+        git checkout --orphan gh-pages
+        git reset
+        mv build/static/css/*.css build/static/css/codeditor.css
+        mv build/static/js/*.js build/static/js/codeditor.js
+        git add build/static/* -f
+        git mv build/static/* ./ -f
+        git commit -m "Build Static files"
+    - uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.ORG_OWNER_GITHUB_TOKEN }}
+        force: true
+        branch: gh-pages
+ # Reference : https://github.com/marketplace/actions/github-push

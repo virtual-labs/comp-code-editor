@@ -60,8 +60,7 @@ All the required data of the problems are provided by the   `code-assessment.jso
             ],
             "expected": [1,2,3],
             "inputs description": "Input Description",
-            "expected description": "Expected Output description",
-            "difficulty": "Difficulty Level"
+            "expected description": "Expected Output description"
         },
         {
             "problem name": "Problem 2",
@@ -71,8 +70,7 @@ All the required data of the problems are provided by the   `code-assessment.jso
             ],
             "expected": [1,2,3],
             "inputs description": "Input Description",
-            "expected description": "Expected Output description",
-            "difficulty": "Difficulty Level"
+            "expected description": "Expected Output description"
         }
     ]
 }
@@ -86,7 +84,6 @@ All the required data of the problems are provided by the   `code-assessment.jso
   - **expected**: (List[items]) expected output of the problem. The inputs can be lists, strings, scalars
   - **inputs description**: (String) inputs description
   - **expected description**: (String) expected outputs description
-  - **difficulty**: (String) Difficulty level of the problem (beginner, intermediate, or advanced).
 
 ## Using the Code Editor
 1. The code assessment tool currently supports only JavaScript. Thus the solution to all exercises requires to be in JavaScript only.

@@ -7,31 +7,15 @@ import { DataContext } from './DataProvider'
 
 const Container = styled(Box)`
   background-color: #060606;
-  height: 50vh;
   display: flex;
+  flex: 1
 `
 
 const Code = () => {
-  const { html, css, js, setHtml, setCss, setJs } = useContext(DataContext)
+  const { js, setJs } = useContext(DataContext)
 
   return (
-    <Container>
-      <Editor
-        language='xml'
-        heading='HTML'
-        value={html}
-        onChange={setHtml}
-        icon='/'
-        color='#FF3C41'
-      />
-      <Editor
-        language='css'
-        heading='CSS'
-        value={css}
-        onChange={setCss}
-        icon='*'
-        color='#0EBEFF'
-      />
+    <Container>      
       <Editor
         language='javascript'
         heading='JS'

@@ -10,15 +10,11 @@
 
 .CodeMirror-scroll {
   background: #1d1e22;
-<<<<<<< Updated upstream
-}
-=======
 }
 
 input {
   display: block;
 }
-
 
 .parent {
   display: flex;
@@ -40,4 +36,3 @@ input {
 .problem-statement {
   margin-left: 20px;
 }
->>>>>>> Stashed changes

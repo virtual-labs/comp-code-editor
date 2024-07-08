@@ -4,13 +4,24 @@ import { DataContext } from './DataProvider'
 
 import { Box, styled } from '@mui/material'
 
+
 const Container = styled(Box)`
-  height: 41vh;
+  flex: 1;
+  border: 3px solid black;
 `
 
 const Result = () => {
   const [src, setSrc] = useState('')
-  const { html, css, js } = useContext(DataContext)
+  const { js, exp } = useContext(DataContext)
+  const [attempts, setAttempts] = useState(1)
+
+  // useEffect(() => {
+  //   console.log(attempts)
+  // }, [attempts])
+
+  const update = (setAttempts) => { 
+    setAttempts(att => att - 1)
+  }
 
   const srcCode = `
   <!DOCTYPE html>
@@ -124,12 +135,11 @@ const Result = () => {
 
 
         function checkOutput() {
-          let expectedOutputs = Array.isArray(exp?.expected) ? exp.expected : [String(exp?.expected)];
+          let expectedOutput = String(${JSON.stringify(exp?.expected)});
           let actualOutput = String(x);
           let submitButton = document.getElementById('submit-button');
           document.getElementById("expected-result-header").style.display = "block";
-          
-          if (expectedOutputs.includes(actualOutput)) {
+          if (expectedOutput === actualOutput) {
             document.getElementById('result-announce-correct').style.display = 'flex';
             let result_announce_span = document.getElementById('result-announce-result-correct')
             document.getElementById('result-announce-incorrect').style.display = 'none';
@@ -159,10 +169,10 @@ const Result = () => {
     }, 250)
 
     return () => clearTimeout(timeout)
-  }, [html, css, js])
+  }, [js])
 
   return (
-    <Container style={html || css || js ? null : { background: '#444857' }}>
+    <Container>
       <iframe
         srcDoc={src}
         title='output'
@@ -170,6 +180,8 @@ const Result = () => {
         frameBorder='0'
         width='100%'
         height='100%'
+        id='result'
+        style={{height: '100%'}}
       />
     </Container>
   )

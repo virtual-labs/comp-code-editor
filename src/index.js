@@ -5,7 +5,7 @@ import App from './App'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App type='language' language='python' />
+    <App type='webeditor' language='python' />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('code-editor')
 )

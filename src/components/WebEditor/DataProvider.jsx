@@ -1,13 +1,10 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, useEffect } from 'react'
 
 export const DataContext = createContext(null)
 
 const DataProvider = ({ children }) => {
-  const [html, setHtml] = useState('')
+  const [exp, setExp] = useState({})
   const [js, setJs] = useState('')
-<<<<<<< Updated upstream
-  const [css, setCss] = useState('')
-=======
   const [problems, setProblems] = useState([])
   const [experimentName, setExperimentName] = useState('')
 
@@ -26,7 +23,7 @@ const DataProvider = ({ children }) => {
               setJs(
               `/* Change only the function func
 @params:
-${'\n' + inputs?.map((inp, idx) => `${inp} = ${JSON.stringify(data?.inputs[idx])}`).join('\n')}
+${inputs?.map((inp,idx) => `${inp} = ${JSON.stringify(data?.inputs[idx])}`).join('\n')}
 */
 const func = (${String(inputs)}) => {
   // Write the code here
@@ -47,17 +44,16 @@ const func = (${String(inputs)}) => {
     }
   }, [])
   
->>>>>>> Stashed changes
 
   return (
     <DataContext.Provider
       value={{
-        html,
-        setHtml,
-        css,
-        setCss,
         js,
         setJs,
+        problems,
+        setProblems,
+        exp,
+        setExp
       }}
     >
       {children}
