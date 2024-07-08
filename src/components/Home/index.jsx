@@ -2,13 +2,13 @@ import WebEditor from '../WebEditor'
 import LanguageEditor from '../LanguageEditor'
 
 const Home = (props) => {
-  if (props.type == 'webeditor') {
+  if (props.type === 'webeditor') {
     return (
       <>
         <WebEditor />
       </>
     )
-  } else if (props.type == 'language') {
+  } else if (props.type === 'language') {
     return (
       <>
         <LanguageEditor language={props.language} />

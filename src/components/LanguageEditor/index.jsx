@@ -6,31 +6,31 @@ import Python from './python'
 import Clike from './clike'
 
 function index(props) {
-  if (props.language == 'javascript') {
+  if (props.language === 'javascript') {
     return (
       <>
         <Javascript />
       </>
     )
-  } else if (props.language == 'html') {
+  } else if (props.language === 'html') {
     return (
       <>
         <Html />
       </>
     )
-  } else if (props.language == 'css') {
+  } else if (props.language === 'css') {
     return (
       <>
         <Css />
       </>
     )
-  } else if (props.language == 'python') {
+  } else if (props.language === 'python') {
     return (
       <>
         <Python />
       </>
     )
-  } else if (props.language == 'c' || props.language == 'cpp') {
+  } else if (props.language === 'c' || props.language === 'cpp') {
     return (
       <>
         <Clike />
