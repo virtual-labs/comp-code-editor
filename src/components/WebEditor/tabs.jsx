@@ -11,6 +11,8 @@ import { alpha } from '@mui/material/styles';
 import Code from './Code';
 import Result from './Result';
 import { Margin } from '@mui/icons-material';
+const BACKGROUND_COLOR_LIGHT_GRAY = '#f0f0f0';
+const BACKGROUND_COLOR_DARKER_GRAY = '#e0e0e0';
 
 const DifficultyChip = styled(Chip)`
   margin-top: 5px;
@@ -143,10 +145,10 @@ return 'hello world'
               mt: 1,
               textTransform: 'none',
               fontWeight: 'bold',
-              color: '#000', // Black text color
-              backgroundColor: '#f0f0f0', // Light gray background color
+              color: '#000',
+              backgroundColor: BACKGROUND_COLOR_LIGHT_GRAY,
               '&:hover': {
-                backgroundColor: '#e0e0e0', // Darker gray on hover
+                backgroundColor: BACKGROUND_COLOR_DARKER_GRAY,
               },
             }}
           >
