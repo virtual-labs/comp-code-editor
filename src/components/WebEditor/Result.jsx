@@ -4,7 +4,6 @@ import { DataContext } from './DataProvider'
 
 import { Box, styled } from '@mui/material'
 
-
 const Container = styled(Box)`
   flex: 1;
   border: 3px solid black;
@@ -13,15 +12,6 @@ const Container = styled(Box)`
 const Result = () => {
   const [src, setSrc] = useState('')
   const { js, exp } = useContext(DataContext)
-  const [attempts, setAttempts] = useState(1)
-
-  // useEffect(() => {
-  //   console.log(attempts)
-  // }, [attempts])
-
-  const update = (setAttempts) => { 
-    setAttempts(att => att - 1)
-  }
 
   const srcCode = `
   <!DOCTYPE html>
@@ -106,8 +96,8 @@ const Result = () => {
       </div> 
       <script>
         document.getElementById('expected-result').innerHTML = ${JSON.stringify(
-          exp?.expected
-        )};
+    exp?.expected
+  )};
       
         let acc = document.getElementById("accordion");
         let expected_output = document.getElementById("expected-result");
@@ -135,11 +125,12 @@ const Result = () => {
 
 
         function checkOutput() {
-          let expectedOutput = String(${JSON.stringify(exp?.expected)});
+          let expectedOutputs = Array.isArray(exp?.expected) ? exp.expected : [String(exp?.expected)];
           let actualOutput = String(x);
           let submitButton = document.getElementById('submit-button');
           document.getElementById("expected-result-header").style.display = "block";
-          if (expectedOutput === actualOutput) {
+          
+          if (expectedOutputs.includes(actualOutput)) {
             document.getElementById('result-announce-correct').style.display = 'flex';
             let result_announce_span = document.getElementById('result-announce-result-correct')
             document.getElementById('result-announce-incorrect').style.display = 'none';
@@ -169,7 +160,7 @@ const Result = () => {
     }, 250)
 
     return () => clearTimeout(timeout)
-  }, [js])
+  }, [ srcCode, js ])
 
   return (
     <Container>
@@ -181,8 +172,9 @@ const Result = () => {
         width='100%'
         height='100%'
         id='result'
-        style={{height: '100%'}}
+        style={{ height: '100%' }}
       />
+
     </Container>
   )
 }

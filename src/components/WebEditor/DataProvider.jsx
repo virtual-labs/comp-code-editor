@@ -6,7 +6,6 @@ const DataProvider = ({ children }) => {
   const [exp, setExp] = useState({})
   const [js, setJs] = useState('')
   const [problems, setProblems] = useState([])
-  const [experimentName, setExperimentName] = useState('')
 
   useEffect(() => {
     try {
@@ -16,10 +15,9 @@ const DataProvider = ({ children }) => {
           await response.json()
             .then(data => {
               console.log(data)
-              setExperimentName(data['experiment name'])
               setProblems(data?.problems);
               let inputs = data?.inputs?.map((inp, idx) => `inp${idx+1}`)
-              if(inputs == undefined) inputs = [];
+              if(inputs === undefined) inputs = [];
               setJs(
               `/* Change only the function func
 @params:

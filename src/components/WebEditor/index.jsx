@@ -1,8 +1,4 @@
-import Code from './Code'
-import Result from './Result'
-import Header from './Header'
 import DataProvider from './DataProvider'
-import { useEffect, useState } from 'react'
 import BasicTabs from './tabs'
 
 // const Home = () => {
