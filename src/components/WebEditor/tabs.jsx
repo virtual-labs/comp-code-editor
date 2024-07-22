@@ -88,13 +88,13 @@ export default function BasicTabs() {
     setJs(
       `/* Change only the function func
 @params:
-${'  ' + inputs?.map((inp, idx) => `${inp} = ${JSON.stringify(data?.inputs[idx])}`).join('\n  ')}
+${inputs.map((inp, idx) => `  ${inp} = ${JSON.stringify(data?.inputs[idx])}`).join('\n')}
 */
-const func = (${String(inputs)}) => {
+const func = (${inputs.join(', ')}) => {
 // Write the code here
 return 'hello world'
 }
-    `
+      `
     );
   }, [value, problems, setExp, setJs]);
 
@@ -125,7 +125,7 @@ return 'hello world'
           })}
         </Tabs>
 
-        <div className="problem-statement">
+        <div className="problem-statement" style={{ marginBottom: '20px' }}>
           <h4 style={{ marginBottom: '9px' }}>{problems[value]?.['problem name']}</h4>
           <DifficultyChip
             label={problems[value]?.['difficulty']}
@@ -138,27 +138,31 @@ return 'hello world'
           <h5 style={{ fontStyle: 'italic' }}>Output Format</h5>
           <span>{problems[value]?.['expected description']}</span>
           <br />
-          <Button
-            style={{ margin: '20px 0px' }}
-            onClick={toggleHint}
-            sx={{
-              mt: 1,
-              textTransform: 'none',
-              fontWeight: 'bold',
-              color: '#000',
-              backgroundColor: BACKGROUND_COLOR_LIGHT_GRAY,
-              '&:hover': {
-                backgroundColor: BACKGROUND_COLOR_DARKER_GRAY,
-              },
-            }}
-          >
-            Hint
-          </Button>
-          <Collapse in={showHint}>
-            <Box >
-              <Typography>{problems[value]?.['hint']}</Typography>
-            </Box>
-          </Collapse>
+          {problems[value]?.hint && (
+            <>
+              <Button
+                style={{ marginTop: '20px', marginBottom: '10px' }}
+                onClick={toggleHint}
+                sx={{
+                  mt: 1,
+                  textTransform: 'none',
+                  fontWeight: 'bold',
+                  color: '#000',
+                  backgroundColor: BACKGROUND_COLOR_LIGHT_GRAY,
+                  '&:hover': {
+                    backgroundColor: BACKGROUND_COLOR_DARKER_GRAY,
+                  },
+                }}
+              >
+                Hint
+              </Button>
+              <Collapse in={showHint}>
+                <Box>
+                  <Typography>{problems[value]?.hint}</Typography>
+                </Box>
+              </Collapse>
+            </>
+          )}
         </div>
       </Box>
       {problems.map((element, idx) => (
