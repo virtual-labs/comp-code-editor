@@ -4,6 +4,7 @@ import { DataContext } from './DataProvider'
 
 import { Box, styled } from '@mui/material'
 
+
 const Container = styled(Box)`
   flex: 1;
   border: 3px solid black;
@@ -95,9 +96,7 @@ const Result = () => {
       <button id="submit-button" onclick="checkOutput()">Submit</button>
       </div> 
       <script>
-        document.getElementById('expected-result').innerHTML = ${JSON.stringify(
-    exp?.expected
-  )};
+        document.getElementById('expected-result').innerHTML = ${JSON.stringify(exp?.expected)};
       
         let acc = document.getElementById("accordion");
         let expected_output = document.getElementById("expected-result");
@@ -125,12 +124,11 @@ const Result = () => {
 
 
         function checkOutput() {
-          let expectedOutputs = Array.isArray(exp?.expected) ? exp.expected : [String(exp?.expected)];
+          let expectedOutput = String(${JSON.stringify(exp?.expected)});
           let actualOutput = String(x);
           let submitButton = document.getElementById('submit-button');
           document.getElementById("expected-result-header").style.display = "block";
-          
-          if (expectedOutputs.includes(actualOutput)) {
+          if (expectedOutput === actualOutput) {
             document.getElementById('result-announce-correct').style.display = 'flex';
             let result_announce_span = document.getElementById('result-announce-result-correct')
             document.getElementById('result-announce-incorrect').style.display = 'none';
@@ -160,7 +158,7 @@ const Result = () => {
     }, 250)
 
     return () => clearTimeout(timeout)
-  }, [ srcCode, js ])
+  }, [js])
 
   return (
     <Container>
@@ -174,7 +172,6 @@ const Result = () => {
         id='result'
         style={{ height: '100%' }}
       />
-
     </Container>
   )
 }
