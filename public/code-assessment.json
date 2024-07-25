@@ -7,7 +7,7 @@
             "inputs": [
                 [12,5,10]
             ],
-            "expected": 5,
+            "expected": "Hello World",
             "inputs description": "Input consists of an array of unsorted array - inp1. It may be of arbitrary length.",
             "expected description": "An array of numbers Eg. 1,2,4,5 sorted in ascending orders",
             "difficulty": "beginner",

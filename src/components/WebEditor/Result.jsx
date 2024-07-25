@@ -121,7 +121,7 @@ const Result = () => {
 
         function checkOutput() {
           let expectedOutput = JSON.stringify(${JSON.stringify(exp?.expected)});
-          let actualOutput = JSON.stringify(x);  // Serialize the output to JSON
+          let actualOutput = JSON.stringify(x);
           let submitButton = document.getElementById('submit-button');
           document.getElementById("expected-result-header").style.display = "block";
           if (expectedOutput === actualOutput) {
@@ -138,8 +138,8 @@ const Result = () => {
           }
         }
         ${js}
-        let x = func(${JSON.stringify(exp?.inputs)});
-        document.getElementById('result').value = JSON.stringify(x);
+        let x = func(${exp?.inputs?.map(inp => JSON.stringify(inp))});
+        document.getElementById('result').value = x;
       </script>
     </body>
   </html>
