@@ -12,6 +12,10 @@
   background: #1d1e22;
 }
 
+.CodeMirror-line {
+  word-break: break-all;
+}
+
 input {
   display: block;
 }

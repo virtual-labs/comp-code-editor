@@ -10,7 +10,6 @@ import { green, yellow } from '@mui/material/colors';
 import { alpha } from '@mui/material/styles';
 import Code from './Code';
 import Result from './Result';
-import { Margin } from '@mui/icons-material';
 const BACKGROUND_COLOR_LIGHT_GRAY = '#f0f0f0';
 const BACKGROUND_COLOR_DARKER_GRAY = '#e0e0e0';
 
