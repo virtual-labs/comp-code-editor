@@ -1,10 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
-
 import { DataContext } from './DataProvider'
-
 import { Box, styled } from '@mui/material'
-
-
 const Container = styled(Box)`
   flex: 1;
   border: 3px solid black;

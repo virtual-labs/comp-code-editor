@@ -12,7 +12,7 @@
   background: #1d1e22;
 }
 
-.CodeMirror-line {
+.custom-word-break {
   word-break: break-all;
 }
 
