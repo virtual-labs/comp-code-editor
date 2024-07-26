@@ -139,7 +139,7 @@ const Result = () => {
         }
         ${js}
         let x = func(${exp?.inputs?.map(inp => JSON.stringify(inp))});
-        document.getElementById('result').value = x;
+        document.getElementById('result').value = JSON.stringify(x);
       </script>
     </body>
   </html>
