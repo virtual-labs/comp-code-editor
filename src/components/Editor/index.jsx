@@ -46,6 +46,13 @@ const Editor = ({ heading, language, value, onChange, icon, color }) => {
     onChange(value)
   }
 
+  const handleEditorDidMount = (editor) => {
+    const lines = editor.getWrapperElement().querySelectorAll('.CodeMirror-line');
+    lines.forEach((line) => {
+      line.classList.add('custom-word-break');
+    });
+  };
+
   return (
     <Container style={open ? null : { flexGrow: 0 }}>
       <Header>
@@ -76,6 +83,7 @@ const Editor = ({ heading, language, value, onChange, icon, color }) => {
       </Header>
       <ControlledEditor
         onBeforeChange={handleChange}
+        editorDidMount={handleEditorDidMount}
         value={value}
         className='controlled-editor'
         options={{

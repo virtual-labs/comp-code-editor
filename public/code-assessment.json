@@ -5,10 +5,9 @@
             "problem name": "Problem 1",
             "description": "This is problem 1",
             "inputs": [
-                [12,5,10],
-                [1,2,3]
+                [12,5,10]
             ],
-            "expected": [5,10,12],
+            "expected": "Hello World",
             "inputs description": "Input consists of an array of unsorted array - inp1. It may be of arbitrary length.",
             "expected description": "An array of numbers Eg. 1,2,4,5 sorted in ascending orders",
             "difficulty": "beginner",
@@ -33,7 +32,12 @@
                 [1,2,3],
                 [12,5,10]
             ],
-            "expected": [1, 2, 3],
+            "expected": [
+                ["A", "C", 1],
+                ["A", "B", 2],
+                ["B", "D", 3],
+                ["C", "D", 4]
+            ],
             "inputs description": "Input consists of an array of unsorted array - inp1. It may be of arbitrary length.",
             "expected description": "An array of numbers Eg. 1,2,4,5 sorted in ascending orders",
             "difficulty": "advanced"

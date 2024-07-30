@@ -1,9 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
-
 import { DataContext } from './DataProvider'
-
 import { Box, styled } from '@mui/material'
-
 const Container = styled(Box)`
   flex: 1;
   border: 3px solid black;
@@ -87,18 +84,15 @@ const Result = () => {
         <span id="result-announce-result-correct"></span>
       </div>
       <h3>Code Output:</h3>
-      <textarea disabled id="result"></textarea>
+      <textarea disabled id="result" style="resize: vertical; min-height: 1.5em"></textarea>
       <h3 id="expected-result-header">Expected Output: <i class="fa fa-caret-square-o-down" id="accordion" style="font-size:25px; color: blue"></i>
       </h3>
-      <textarea disabled id="expected-result"></textarea>
+      <textarea disabled id="expected-result" style="resize: vertical; min-height: 1.5em"></textarea>
       <div class="button-container">
       <button id="submit-button" onclick="checkOutput()">Submit</button>
       </div> 
       <script>
-        document.getElementById('expected-result').innerHTML = ${JSON.stringify(
-    exp?.expected
-  )};
-      
+        document.getElementById('expected-result').value = JSON.stringify(${JSON.stringify(exp?.expected)});
         let acc = document.getElementById("accordion");
         let expected_output = document.getElementById("expected-result");
 
@@ -106,13 +100,11 @@ const Result = () => {
         document.getElementById("expected-result-header").style.display = "none";
 
         acc.addEventListener("click", function() {
-          if(this.classList.contains("fa-caret-square-o-down"))
-          {
+          if(this.classList.contains("fa-caret-square-o-down")) {
             expected_output.style.display = "block";
             this.classList.remove("fa-caret-square-o-down");
             this.classList.add("fa-caret-square-o-up");
-          }
-          else{
+          } else {
             expected_output.style.display = "none";
             this.classList.remove("fa-caret-square-o-up");
             this.classList.add("fa-caret-square-o-down");
@@ -120,38 +112,33 @@ const Result = () => {
         });
 
         document.getElementById("result-announce-close").addEventListener("click", function() {
-          document.getElementById("result-announce").style.display = "none"
+          document.getElementById("result-announce").style.display = "none";
         });
 
-
         function checkOutput() {
-          let expectedOutputs = Array.isArray(exp?.expected) ? exp.expected : [String(exp?.expected)];
-          let actualOutput = String(x);
+          let expectedOutput = JSON.stringify(${JSON.stringify(exp?.expected)});
+          let actualOutput = JSON.stringify(x);
           let submitButton = document.getElementById('submit-button');
           document.getElementById("expected-result-header").style.display = "block";
-          
-          if (expectedOutputs.includes(actualOutput)) {
+          if (expectedOutput === actualOutput) {
+            let result_announce_span = document.getElementById('result-announce-result-correct');
             document.getElementById('result-announce-correct').style.display = 'flex';
-            let result_announce_span = document.getElementById('result-announce-result-correct')
             document.getElementById('result-announce-incorrect').style.display = 'none';
             result_announce_span.innerHTML = 'Correct';
           } else {
+            let result_announce_span = document.getElementById('result-announce-result-incorrect');
             document.getElementById('result-announce-incorrect').style.display = 'flex';
-            let result_announce_span = document.getElementById('result-announce-result-incorrect')
             document.getElementById('result-announce-correct').style.display = 'none';
             result_announce_span.innerHTML = 'Incorrect';
-            document.getElementById('submit-button').innerHTML = 'Resubmit'
+            document.getElementById('submit-button').innerHTML = 'Resubmit';
           }
-          // setTimeout(() => {
-          //   result_announce.style.display = "none";
-          // }, 2000)
         }
         ${js}
         let x = func(${exp?.inputs?.map(inp => JSON.stringify(inp))});
-        document.getElementById('result').innerHTML = x;
+        document.getElementById('result').value = JSON.stringify(x);
       </script>
     </body>
-  </html>  
+  </html>
   `
 
   useEffect(() => {
@@ -160,7 +147,7 @@ const Result = () => {
     }, 250)
 
     return () => clearTimeout(timeout)
-  }, [ srcCode, js ])
+  }, [srcCode, js])
 
   return (
     <Container>
@@ -174,7 +161,6 @@ const Result = () => {
         id='result'
         style={{ height: '100%' }}
       />
-
     </Container>
   )
 }
