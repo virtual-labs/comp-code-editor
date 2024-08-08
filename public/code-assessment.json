@@ -5,7 +5,36 @@
             "problem name": "Problem 1",
             "description": "This is problem 1",
             "inputs": [
-                [12,5,10]
+                {
+                    "inputs": [
+                        {
+                            "val": 3,
+                            "left": {
+                                "val": 2,
+                                "left": {
+                                    "val": 1,
+                                    "left": null,
+                                    "right": null
+                                },
+                                "right": null
+                            },
+                            "right": {
+                                "val": 4,
+                                "left": null,
+                                "right": {
+                                    "val": 5,
+                                    "left": null,
+                                    "right": {
+                                        "val": 6,
+                                        "left": null,
+                                        "right": null
+                                    }
+                                }
+                            }
+                        },
+                        5
+                    ]
+                }
             ],
             "expected": "Hello World",
             "inputs description": "Input consists of an array of unsorted array - inp1. It may be of arbitrary length.",
@@ -17,8 +46,17 @@
             "problem name": "Problem 2",
             "description": "This is problem 2",
             "inputs": [
-                [1,2,3],
-                [12,5,10]
+                ["Home", "School", "Park", "Mall", "Library"],
+                [
+                    ["Home", "School", 4],
+                    ["Home", "Park", 2],
+                    ["School", "Park", 1],
+                    ["School", "Mall", 5],
+                    ["Park", "Mall", 3],
+                    ["Park", "Library", 6],
+                    ["Mall", "Library", 2]
+                ],
+                "Home"
             ],
             "expected": [1, 2, 3],
             "inputs description": "Input consists of an array of unsorted array - inp1. It may be of arbitrary length.",
