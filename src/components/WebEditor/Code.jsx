@@ -8,7 +8,8 @@ import { DataContext } from './DataProvider'
 const Container = styled(Box)`
   background-color: #060606;
   display: flex;
-  flex: 1
+  flex: 2;
+  overflow: auto;
 `
 
 const Code = () => {

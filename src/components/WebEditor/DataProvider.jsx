@@ -21,7 +21,7 @@ const DataProvider = ({ children }) => {
               setJs(
               `/* Change only the function func
 @params:
-${inputs?.map((inp,idx) => `${inp} = ${JSON.stringify(data?.inputs[idx])}`).join('\n')}
+${inputs?.map((inp,idx) => `  ${inp} = ${JSON.stringify(data?.inputs[idx])}`).join('\n')}
 */
 const func = (${String(inputs)}) => {
   // Write the code here
