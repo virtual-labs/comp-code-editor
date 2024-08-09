@@ -6,35 +6,31 @@
             "description": "This is problem 1",
             "inputs": [
                 {
-                    "inputs": [
-                        {
-                            "val": 3,
-                            "left": {
-                                "val": 2,
-                                "left": {
-                                    "val": 1,
-                                    "left": null,
-                                    "right": null
-                                },
-                                "right": null
-                            },
-                            "right": {
-                                "val": 4,
-                                "left": null,
-                                "right": {
-                                    "val": 5,
-                                    "left": null,
-                                    "right": {
-                                        "val": 6,
-                                        "left": null,
-                                        "right": null
-                                    }
-                                }
-                            }
+                    "val": 3,
+                    "left": {
+                        "val": 2,
+                        "left": {
+                            "val": 1,
+                            "left": null,
+                            "right": null
                         },
-                        5
-                    ]
-                }
+                        "right": null
+                    },
+                    "right": {
+                        "val": 4,
+                        "left": null,
+                        "right": {
+                            "val": 5,
+                            "left": null,
+                            "right": {
+                                "val": 6,
+                                "left": null,
+                                "right": null
+                            }
+                        }
+                    }
+                },
+                5
             ],
             "expected": "Hello World",
             "inputs description": "Input consists of an array of unsorted array - inp1. It may be of arbitrary length.",
