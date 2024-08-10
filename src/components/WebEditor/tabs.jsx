@@ -10,6 +10,8 @@ import { green, yellow } from '@mui/material/colors';
 import { alpha } from '@mui/material/styles';
 import Code from './Code';
 import Result from './Result';
+import '../../App.css';
+
 const BACKGROUND_COLOR_LIGHT_GRAY = '#f0f0f0';
 const BACKGROUND_COLOR_DARKER_GRAY = '#e0e0e0';
 
@@ -76,7 +78,7 @@ function a11yProps(index) {
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
-  const { setJs, problems, setExp } = React.useContext(DataContext);
+  const { setJs, problems, setExp, js } = React.useContext(DataContext); // added js to the destructured variables
   const [showHint, setShowHint] = React.useState(false);
 
   React.useEffect(() => {
@@ -96,6 +98,17 @@ return 'hello world'
       `
     );
   }, [value, problems, setExp, setJs]);
+
+  React.useEffect(() => {
+    const applyCustomStyles = () => {
+      const codeMirrorLines = document.getElementsByClassName('CodeMirror-line');
+      for (let i = 0; i < codeMirrorLines.length; i++) {
+        codeMirrorLines[i].classList.add('code-mirror-custom');
+      }
+    };
+
+    applyCustomStyles();
+  }, [js]); // Re-run this effect whenever the 'js' state changes
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
