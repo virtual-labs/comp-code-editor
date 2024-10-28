@@ -54,7 +54,7 @@ To integrate the code assessment tool, developers need to configure the `code-as
 
 ### Writing code-assessment.json
 
-The problems and their associated data are specified in the `code-assessment.json` file, which should be located in the experiment's directory. The tool dynamically fetches and parses this file at runtime. Developers must adhere to the specified format when creating this file, as illustrated in the example of [Bubble Sort](https://virtual-labs.github.io/exp-bubble-sort-iiith/code-assessment.html) experiment below:
+The problems and their associated data are specified in the `code-assessment.json` file, which should be located in the experiment's directory. The tool dynamically fetches and parses this file at runtime. Developers must adhere to the specified format when creating this file, as illustrated in the example of [Bubble Sort](https://ds1-iiith.vlabs.ac.in/exp/bubble-sort/code-assessment.html) experiment below:
 ```
 {
     "version": 1,
@@ -69,7 +69,8 @@ The problems and their associated data are specified in the `code-assessment.jso
             "expected": [11,20,49,64,66,79],
             "inputs description": "Input consists of an array of unsorted array - inp1. It may be of arbitrary length.",
             "expected description": "An array of numbers Eg. 1,2,4,5 sorted in ascending orders",
-            "difficulty": "beginner"
+            "difficulty": "beginner",
+            "hint" :"Make sure to swap elements properly."
         },
         {
             "problem name": "Optimized Bubble Sort",
@@ -80,7 +81,8 @@ The problems and their associated data are specified in the `code-assessment.jso
             "expected": [2,9,10,24,59,100,258,300],
             "inputs description": "Input consists of an array of unsorted array - inp1. It may be of arbitrary length.",
             "expected description": "An array of numbers Eg. 1,2,4,5 sorted in ascending orders",
-            "difficulty": "intermediate"
+            "difficulty": "intermediate",
+            "hint" : "Please ignore already sorted portions to avoide unnecessary comparisons."
         }
     ]
 }
@@ -95,7 +97,11 @@ The problems and their associated data are specified in the `code-assessment.jso
   - **expected**: (*List[Items]*) The expected output for the problem, formatted similarly to the inputs.
   - **inputs description**: (*String*) A description of the inputs.
   - **expected description**: (*String*) A description of the expected outputs.
-  - **difficulty**: (*String*) Difficulty level of the problem.
+  - **difficulty**: (*String*) The difficulty level of the problem. The tab color will change based on the difficulty level:
+      - Green - beginner
+      - Orange - intermediate
+      - Red - advanced
+  - **hint**: (*String*) An optional field where you can provide a hint to assist learners in solving the problem.
 
 ## Using the Code Editor
 1. The Code Assessment Tool currently supports **JavaScript** only. All solutions must be written in JavaScript.
