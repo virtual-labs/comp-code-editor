@@ -1,8 +1,8 @@
-# User Document - Virtual Labs Code Assessment Tool
+# Content Creator Document - Virtual Labs Code Assessment Tool
 
 ## Overview
 
-The Virtual Labs Code Assessment Tool is designed to provide experiment developers with an efficient way to integrate code assessment exercises into their experiments and for learners to try these coding exercies to enrich their learning experience. This user document provides instructions on how to integrate and to use the Virtual Labs Code Assessment Tool effectively.
+The Virtual Labs Code Assessment Tool is designed to help experiment developers integrate code assessment exercises into their experiments and offer learners a hands-on coding experience. This document provides detailed instructions on how to integrate and use the Code Assessment Tool effectively, whether you are a developer or a learner.
 
 ## Table of Contents
 
@@ -16,95 +16,122 @@ The Virtual Labs Code Assessment Tool is designed to provide experiment develope
 
 ## Getting Started
 
-The code assessment tool, if integrated by the developer, can be accessed with the `Code Assessment` tab on the experiments page.
+If the developer has integrated the Code Assessment Tool into an experiment, it can be accessed through the `Code Assessment` tab on the experiment's page. This tool allows learners to solve coding problems within a virtual lab, providing a hands-on learning experience.
 
-## Understanding Problems Format
+### Understanding Problems Format
 
-1. The code assessment tool allows the learners to navigate between the problems, using a switch bar at the top. The correspoding problem will be accessible upon navigating the clicking on the respective problem tab. 
-2. All the problems have their description, Inputs and Output formats provided by the creators. The learners are expected to go through them and do the exercise accordingly.
-3. The inputs are also described in the starting comments of the code editor as `params`.
+1. The `Code Assessment Tool` allows learners to navigate between coding problems using a switch bar located at the top of the page. By clicking on the respective problem tab, learners can access the corresponding problem.
 
-## Integrating the Tool
+2. Each problem includes:
 
-Integration of the code-assessment tool requires the experiment developers to provide a `code-assessment` configuration in the experiment's `experiment-descriptor.json`. The following is an example of one such configuration with the required keys in *experiment-descriptor.json*:
+    - **Description:** A detailed explanation of the problem.
+    - **Input Format:** Defines the type of input expected by the code.
+    - **Output Format:** Specifies what the output should be after the code is executed.
+    
+    Learners are expected to carefully review these sections before attempting the exercise. 
+
+3. The input parameters for the problem are described in the starting comments of the code editor as `params`. These comments provide learners with information about what inputs their code should expect and process.
+
+### Integrating the Tool
+
+To integrate the code assessment tool, developers need to configure the `code-assessment` settings within the `experiment-descriptor.json` file of the experiment. Below is an [example configuration](https://github.com/virtual-labs/exp-bubble-sort-iiith/blob/main/experiment-descriptor.json) with the required keys:
 ```
 ...
 {
   "code-assessment": {
     "include": true,
     "languages": ["javascript"],
-    "position": 5
+    "position": 6
   },
 }
 ...
 ```
-- **include**: (*BOOL*) option to include the tool in the experiment
-- **languages**: (List[strings]) list of supported languages
-- **position**: (Integer) Index of the `Code Assessment` tab in the sidebar
+- **include**: (*Boolean*) Indicates whether the tool should be included in the experiment.
+- **languages**: (*List[String]*) Specifies the list of supported programming languages.
+- **position**: (*Integer*) Defines the position index of the `Code Assessment` tab in the experiment’s sidebar.
 
-**NOTE**: These configurations are all required and if absent, the tool will not be integrated with the experiment
+**NOTE**: All these configurations are mandatory. If any are missing, the tool will not be integrated into the experiment.
 
-## Writing code-assessment.json
+### Writing code-assessment.json
 
-All the required data of the problems are provided by the   `code-assessment.json` data file in the experiments directory. The file is fetched at runtime by the tool and parsed. Developers are required to follow a specific file format similar to the example provided:
+The problems and their associated data are specified in the `code-assessment.json` file, which should be located in the experiment's directory. The tool dynamically fetches and parses this file at runtime. Developers must adhere to the specified format when creating this file, as illustrated in the example of [Bubble Sort](https://ds1-iiith.vlabs.ac.in/exp/bubble-sort/code-assessment.html) experiment below:
 ```
 {
     "version": 1,
-    "experiment name": "Experiment Name",
+    "experiment name": "Bubble Sort",
     "problems": [
         {
-            "problem name": "Problem 1",
-            "description": "Problem 1 Description"
+            "problem name": "Basic Bubble Sort",
+            "description": "Implement basic Bubble Sort algorithm for the given input array"
             "inputs": [
-                [1,2,3]
+                [64,66,20,49,11,79]
             ],
-            "expected": [1,2,3],
-            "inputs description": "Input Description",
-            "expected description": "Expected Output description"
+            "expected": [11,20,49,64,66,79],
+            "inputs description": "Input consists of an array of unsorted array - inp1. It may be of arbitrary length.",
+            "expected description": "An array of numbers Eg. 1,2,4,5 sorted in ascending orders",
+            "difficulty": "beginner",
+            "hint" :"Make sure to swap elements properly."
         },
         {
-            "problem name": "Problem 2",
-            "description": "Problem 2 description",
+            "problem name": "Optimized Bubble Sort",
+            "description": "Implement Optimized Bubble Sort algorithm for the given input array",
             "inputs": [
-              [1,2,3]
+              [10,9,24,100,2,300,258,59]
             ],
-            "expected": [1,2,3],
-            "inputs description": "Input Description",
-            "expected description": "Expected Output description"
+            "expected": [2,9,10,24,59,100,258,300],
+            "inputs description": "Input consists of an array of unsorted array - inp1. It may be of arbitrary length.",
+            "expected description": "An array of numbers Eg. 1,2,4,5 sorted in ascending orders",
+            "difficulty": "intermediate",
+            "hint" : "Please ignore already sorted portions to avoide unnecessary comparisons."
         }
     ]
 }
 ```
-- **version**: (String) Code Assessment Tool verion
-- **Experiment Name**: (String) Experiment Name
-- **problems**: (List[objects]) list of problems. Each problem has:
-  - **problem name**: (String) Name of the problem
-  - **description**: (String) Problem description
-  - **inputs**: (List[items]) inputs to the problem. The inputs can be lists, strings, scalars
-  - **expected**: (List[items]) expected output of the problem. The inputs can be lists, strings, scalars
-  - **inputs description**: (String) inputs description
-  - **expected description**: (String) expected outputs description
+
+- **version**: (*String*) The version of the Code Assessment Tool.
+- **Experiment Name**: (*String*) The name of the experiment.
+- **problems**: (*List[Object]*) A list of problems, where each problem includes:
+  - **problem name**: (*String*) The name of the problem.
+  - **description**: (*String*) A detailed description of the problem.
+  - **inputs**: (*List[Items]*) Inputs for the problem, which can be lists, strings, or scalars.
+  - **expected**: (*List[Items]*) The expected output for the problem, formatted similarly to the inputs.
+  - **inputs description**: (*String*) A description of the inputs.
+  - **expected description**: (*String*) A description of the expected outputs.
+  - **difficulty**: (*String*) The difficulty level of the problem. The tab color will change based on the difficulty level:
+      - Green - beginner
+      - Orange - intermediate
+      - Red - advanced
+  - **hint**: (*String*) An optional field where you can provide a hint to assist learners in solving the problem.
 
 ## Using the Code Editor
-1. The code assessment tool currently supports only JavaScript. Thus the solution to all exercises requires to be in JavaScript only.
-2. The editor supports syntax highlighting, auto-indentation, and other code editor features for a smooth coding experience.
-3. The main function has been provided in the code snippet itself. Other utility methods/classes can be contructed but **the returned results of that function will be considered as the ouput**.
-4. Learners are expected to use logics relevant to the problem given.
+1. The Code Assessment Tool currently supports **JavaScript** only. All solutions must be written in JavaScript.
+2. The editor features syntax highlighting, auto-indentation, and other coding tools to provide a seamless coding experience.
+3. The **main function** is pre-defined in the code editor. Developers can create additional utility methods or classes, but **only the returned result of the main function will be considered as the output.**
+4. Learners should apply relevant logic based on the problem statement.
 
 ## Understanding Code Result
+After writing and running the code in the editor:
 
-The result of the solution to the problem written in the code editor is simoultaneously shown in the result box. The result contains the final output of the code and a submit button. Upon submitting the code, the expected output will also be visible along with the submission result (`correct` / `incorrect`). The users can submit multiple times with no restrictions on the number of submissions.
+- The output is displayed in the result box alongside the code editor.
+- A **Submit button** allows learners to submit their code for evaluation. Upon submission:
+  - The expected output will be shown alongside the learner's output.
+  - The submission result will indicate whether the code is **correct** or **incorrect.**
+- Learners can submit multiple times, with no restrictions on the number of attempts.
 
 ## Known Limitations
 
-- The tool doesnt support multiple languages at present. Also problems with multiple test cases are not provided in the current versions.
+- The tool currently supports **only one programming language** (JavaScript). Additional languages are not yet supported.
+- The tool does not support problems with **multiple test cases** in its current version.
 
 ## Troubleshooting
 
-If you encounter any issues while using Virtual Labs Code Assessment Tool, consider the following troubleshooting steps:
+If you encounter any issues while using the Virtual Labs Code Assessment Tool, consider the following troubleshooting steps:
 
-
-- **Check `assessment.log`**: The validation log for code-assessment.json is build to store compile-time logs for debugging.
-- **Check `code-assessment.json` fetch status**: Check if the code-assessment.json has been fetched with status 200 using browsers developer tools.
-- **Check for code errors**: Check if there are any syntax errors in the code. The code may be throwing errors not handled explicitly by the IDE.
-- **Contact the VLEAD team**: The VLEAD team will connect to the experiment developer and resolve the issue.
+- **Check `assessment.log`:**
+  Review the validation log (`assessment.log`) for compile-time logs, which can help in debugging any issues with `code-assessment.json`.
+- **Check `code-assessment.json` Fetch Status:**
+  Ensure that the `code-assessment.json` file is successfully fetched (status code 200) using the browser's developer tools.
+- **Check for Code Errors:**
+  Verify that there are no syntax errors in the code. Unhandled errors may cause issues within the editor.
+- **Contact the VLEAD Team:**
+  If issues persist, contact the VLEAD team. They will assist the experiment developer in resolving the issue.
